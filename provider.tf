@@ -45,7 +45,7 @@ resource "aws_glue_catalog_database" "data_catalog" {
 
 resource "aws_glue_job" "data_transform_job" {
   name     = "data-transform-job"
-  role     = arn:aws:iam::985539789378:role/AWSGlueServiceRole
+  role     = "arn:aws:iam::985539789378:role/AWSGlueServiceRole"
   command {
     name            = "glueetl"
     script_location = "s3://my-scripts-bucket/my-script.py"
