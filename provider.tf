@@ -52,7 +52,7 @@ resource "aws_iam_role" "lambda_execution_role" {
 
 resource "aws_lambda_function" "data_processor" {
   function_name = "DataProcessor"
-  role          = "arn:aws:iam::985539789378:role/AWSGlueServiceRole"
+  role          = "arn:aws:iam::985539789378:role/lambda-execution-role"
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.8"
   
