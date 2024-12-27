@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "data_bucket" {
-  bucket = "my-data-pipeline-bucket"
+  bucket = "my-data-pipeline-bucket-71189"
 }
 resource "aws_s3_bucket_ownership_controls" "data_bucket" {
   bucket = aws_s3_bucket.data_bucket.id
