@@ -76,13 +76,13 @@ resource "aws_glue_job" "data_transform_job" {
   role_arn = "arn:aws:iam::985539789378:role/AWSGlueServiceRole"
   command {
     name            = "glueetl"
-    script_location = "s3://my-scripts-bucket/my-script.py"
+    script_location = "s3://my-data-pipeline-bucket-71189/lambda_function.py"
   }
   max_capacity = 10
 }
 
 resource "aws_s3_object" "lambda_script" {
   bucket = aws_s3_bucket.data_bucket.bucket
-  key    = "scripts/my_script.py"
-  source = "scripts/my_script.py"  # Local path to your Glue script
+  key    = "lambda/lambda_function.py"
+  source = "lambda/lambda_function.py"  # Local path to your Glue script
 }
