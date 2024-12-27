@@ -1,7 +1,14 @@
 provider "aws" {
   region = "us-east-1"  # or your preferred AWS region
+}
 
-
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.18.0"
+    }
+  }
   backend "s3" {
     bucket         = "myaptestbucketstate"
     key            = "state/terraform.tfstate"
@@ -9,7 +16,8 @@ provider "aws" {
     dynamodb_table = "mystate"
   }
 }
-}
+
+
 
 resource "aws_s3_bucket" "data_bucket" {
   bucket = "my-data-pipeline-bucket-71189"
