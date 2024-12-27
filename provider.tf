@@ -1,6 +1,6 @@
 provider "aws" {
   region = "us-east-1"  # or your preferred AWS region
-}
+
 
   backend "s3" {
     bucket         = "myaptestbucketstate"
@@ -8,6 +8,7 @@ provider "aws" {
     region         = "us-east-1"
     dynamodb_table = "mystate"
   }
+}
 }
 
 resource "aws_s3_bucket" "data_bucket" {
