@@ -16,7 +16,8 @@ jobs:
 
       - name: Install terraform-docs
         run: |
-          curl -sSL https://terraform-docs.io/install.sh | sh
+          curl -sSL https://terraform-docs.io/install.sh 
+          sh install.sh
 
       - name: Generate README.md
         run: |
