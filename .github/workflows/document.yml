@@ -17,7 +17,9 @@ jobs:
       - name: Install terraform-docs
         run: |
           curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.19.0/terraform-docs-v0.19.0-$(uname)-amd64.tar.gz
+          ls
           tar -xzf terraform-docs.tar.gz
+          ls
           chmod +x terraform-docs
           mv terraform-docs /etc/bin/terraform-docs
 
