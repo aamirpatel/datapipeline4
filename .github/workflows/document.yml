@@ -1,34 +1,19 @@
 name: Generate terraform docs
-
 on:
-  pull_request:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   docs:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install terraform-docs
-        run: |
-          curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.19.0/terraform-docs-v0.19.0-$(uname)-amd64.tar.gz
-          tar -xzf terraform-docs.tar.gz
-          chmod +x terraform-docs
-          mv terraform-docs /usr/bin/terraform-docs
-
-      - name: Generate README.md
-        run: |
-          terraform-docs markdown table . > README.md
-
-      - name: Commit changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add README.md
-          git commit -m 'Generate terraform docs'
-          git push
+    - uses: actions/checkout@v3
+      
+  
+    - name: Render terraform docs and push changes back to PR
+      uses: terraform-docs/gh-actions@main
+      with:
+        working-dir: .
+        output-file: README.md
+        output-method: inject
+        git-push: "true"
