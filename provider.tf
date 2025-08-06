@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # or your preferred AWS region
+  region = "us-east-2"  # or your preferred AWS region
 }
 
 terraform {
